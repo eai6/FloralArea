@@ -1,6 +1,6 @@
 .env
 venv
-datasets/
+datasets/*
 output/
 runs/
 yolov*
