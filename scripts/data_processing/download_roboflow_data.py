@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def main(version):
-    os.chdir("/Users/edwardamoah/Documents/GitHub/FloralArea/datasets") # make dynmaic later
-    #rf = Roboflow(api_key=os.getenv("ROBOFLOW_KEY"))
-    #project = rf.workspace("beevision").project("solitary-bee-hotels")
-    #dataset = project.version(version).download("yolov8")
-    #!pip install roboflow
-    #from roboflow import Roboflow
+    try:
+        folder_path = "/Users/edwardamoah/Documents/GitHub/FloralArea/datasets"  # make dynamic later
+        os.makedirs(folder_path, exist_ok=True)
+        os.chdir(folder_path)
+    except Exception as e:
+        print(f"An error occurred while changing the directory: {str(e)}")
 
     rf = Roboflow(api_key=os.getenv("ROBOFLOW_KEY"))
     project = rf.workspace("insectnet-2024").project("floralarea-rhya8")

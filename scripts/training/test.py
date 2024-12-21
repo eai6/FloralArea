@@ -5,7 +5,7 @@ import os
 
 
 # Load a model
-model = YOLO('/Users/edwardamoah/Documents/GitHub/FloralArea/runs/segment/train3/weights/best.pt')  # load a custom model
+model = YOLO('/Users/edwardamoah/Documents/GitHub/FloralArea/runs/segment/train7/weights/best.pt')  # load a custom model
 
 def main(folder, save_folder, conf):
     images = os.listdir(folder) # load images from a folder
@@ -19,7 +19,7 @@ def main(folder, save_folder, conf):
     for image in images_paths:
         print(f'Processing {image}')
         #results = model(image) # predict on an image
-        results = model.predict(image,  conf=conf)
+        results = model.predict(image,  conf=conf, classes=[2])
         
         # generate and save prediction mask
         for r in results:
@@ -31,8 +31,8 @@ def main(folder, save_folder, conf):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train YOLOv8 model")
-    parser.add_argument("--input", type=str, default="/Users/edwardamoah/Downloads/FA photos", help="Path to folder containing images")
-    parser.add_argument("--output", type=str, default="/Users/edwardamoah/Documents/GitHub/FloralArea/output/experiment1_masks", help="Path to folder to save masks")
+    parser.add_argument("--input", type=str, default="/Users/edwardamoah/Downloads/Floral Area Photos/FA photos", help="Path to folder containing images")
+    parser.add_argument("--output", type=str, default="/Users/edwardamoah/Documents/GitHub/FloralArea/output/experiment3_masks", help="Path to folder to save masks")
     parser.add_argument("--conf", type=float, default=0.5, help="Confidence threshold")
     args = parser.parse_args()
     main(args.input, args.output, args.conf)

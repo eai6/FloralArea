@@ -4,3 +4,6 @@ datasets/*
 output/
 runs/
 yolov*
+api/data
+Erickson_data
+research/data
