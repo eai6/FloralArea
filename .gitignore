@@ -10,5 +10,7 @@ research/data/evaluation_images_experiment_1
 research/data/experiment_3_images
 server_runs
 models/*
-api/data/*
+api/data/output/*
+api/data/tiles/*
+api/data/input/*
 notes*
