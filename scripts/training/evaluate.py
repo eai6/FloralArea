@@ -8,7 +8,7 @@ def main(path):
     model = YOLO(path)  # load a custom model
 
     # Validate the model
-    #metrics = model.val()  # no arguments needed, dataset and settings remembered
+    # metrics = model.val()  # no arguments needed, dataset and settings remembered
     # Enable detailed plots (e.g., PR curve, F1-confidence curve)
     metrics = model.val(save_json=True, save_txt=True, plots=True)
 

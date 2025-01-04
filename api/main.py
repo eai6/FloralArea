@@ -8,7 +8,7 @@ app = FastAPI()
 
 
 # initialize the model
-yolo = yolov8.yolov8('/Users/edwardamoah/Documents/GitHub/FloralArea/runs/segment/train7/weights/best.pt', '/Users/edwardamoah/Documents/GitHub/FloralArea/runs/segment/train9/weights/best.pt')
+yolo = yolov8.yolov8('/Users/edwardamoah/Documents/GitHub/FloralArea/models/flower_model.pt', '/Users/edwardamoah/Documents/GitHub/FloralArea/models/reference_object_model.pt')
 
 reference_area = 9.0 # area of the reference object in inches  
 
@@ -38,7 +38,7 @@ def estimateArea(file_location:str, component:str, threshold:float, num_tiles) -
     reference_pixel_area = ip.getPixelArea(mask)
     if reference_pixel_area == 0:
        #raise Exception("Reference object not found in the image")
-       reference_pixel_area = runTiles.runTilles(yolo, file_location, threshold, 2)
+       reference_pixel_area = runTiles.runTilles(yolo, file_location, threshold, 3)
 
     #component_area = runTiles.runTilles(yolo, file_location, threshold, num_tiles, component)
     #reference_pixel_area = runTiles.runTilles(yolo, file_location, threshold, num_tiles+1, 'reference_object')
@@ -70,6 +70,7 @@ async def estimate_area(component:str, threshold:float, background_tasks:Backgro
         # apply preprocessing to the image
         ip.apply_preprocessing(file_location)
 
+        #
         #yolo.savePlot(file_location, component, threshold)
 
         # run the model on the image
@@ -83,5 +84,6 @@ async def estimate_area(component:str, threshold:float, background_tasks:Backgro
             "unit": "inches^2"
         }
     except Exception as e:
+        print(e)
         raise HTTPException(status_code=500, detail=str(e))
 

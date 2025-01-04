@@ -6,4 +6,9 @@ runs/
 yolov*
 api/data
 Erickson_data
-research/data
+research/data/evaluation_images_experiment_1
+research/data/experiment_3_images
+server_runs
+models/*
+api/data/*
+notes*

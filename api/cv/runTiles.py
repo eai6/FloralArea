@@ -126,7 +126,7 @@ def runTile(yolo, threshold, component,  filename):
     return reference_pixel_area
 
 
-def runTilles(yolo, file_path, threshold, num_tiles = 1, component = 'reference_object'):
+def runTilles(yolo, file_path, threshold, num_tiles = 2, component = 'reference_object'):
     
     # slice the image
     #num_tiles = 2
