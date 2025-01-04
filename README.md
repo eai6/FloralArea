@@ -1,3 +1,9 @@
+## Overview
+Provide a brief description of your project, its goals, and relevant context.
+
+## Directory Structure
+
+```plaintext
 ----api/
     cv/
         img_processing.py          # Image processing functions for CV tasks
