@@ -4,7 +4,11 @@ from PIL import Image
 import numpy as np
 from numpy import asarray
 import os
-from api.cv import img_processing as ip
+
+try:
+    from api.cv import img_processing as ip
+except:
+    from cv import img_processing as ip
 
 
 
